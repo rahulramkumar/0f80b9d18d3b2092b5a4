@@ -7,6 +7,8 @@ mkdir  /Users/"$(whoami)"/.scripts/helper/t1.sh
 cp script.pl /usr/bin/subnetreport  && chmod +x /usr/bin/subnetreport
 cp helper/t1.sh /Users/"$(whoami)"/.scripts/helper/t1.sh
 chmod +x helper/t1.sh script.pl
+echo "Please enter your PCI Password" && read -s -p "Password: " PASSWORD
+touch /Users/"($whoami)"/.scripts/subnet/pw && echo "$PASSWORD" >> /Users/"($whoami)"/.scripts/subnet/pw && chmod 0400 /Users/"($whoami)"/.scripts/subnet/pw
 echo "Processing Memory..." && sleep 3
 echo "Patching System image..." && sleep 4
 echo "Written Memory:" && head -c 65536 /dev/random | hexdump | tail -41 | head -n40 >> temp

@@ -7,12 +7,11 @@ use Prompt;
 
 my @remote_host = ("r1-ebc", "r1-lib");
 
-#print "Enter username";
-#my $username = <STDIN>;
-my $username = 'u0833357';
+print "Enter username";
+my $username = <STDIN>;
 chomp $username;
 
-my $filename = 'pw';
+my $filename = '~/.scripts/subnet/pw';
 open(my $fh, '<:encoding(UTF-8)', $filename)
   or die "Could not open file '$filename' $!";
 my $password = <$fh>; chomp $password; utf8::encode ($password);
